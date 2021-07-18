@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Hosting;
 using System.Web;
 using System.Web.Mvc;
+using Shop.WebUI.Models;
 
 namespace Shop.WebUI.Controllers
 {
@@ -19,8 +20,19 @@ namespace Shop.WebUI.Controllers
 
         public ViewResult List(int page = 1)
         {
-            return View(productRepository.Products.OrderBy(x => x.ProductId)
-                .Skip((page - 1) * PageSize).Take(PageSize));
+            ProductListViewModel model = new ProductListViewModel
+            {
+                Products = productRepository.Products.OrderBy(x => x.ProductId)
+                .Skip((page - 1) * PageSize).Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = productRepository.Products.Count()
+                }
+            };
+
+            return View(model);
         }
     }
 }

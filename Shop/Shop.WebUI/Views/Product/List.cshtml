@@ -1,9 +1,11 @@
 ﻿@using Shop.Domain.Entities
-@model  IEnumerable<Shop.Domain.Entities.Product>
+@using Shop.WebUI.HtmlHelpers
+
+@model  Shop.WebUI.Models.ProductListViewModel
 @{
     ViewBag.Title = "Products";
 }
-@foreach (var p in Model)
+@foreach (var p in Model.Products)
 {
     <div class="item">
         <h3>@p.Name</h3>
@@ -11,3 +13,7 @@
         <h4>@p.Price.ToString("c")</h4>
     </div>
 }
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
