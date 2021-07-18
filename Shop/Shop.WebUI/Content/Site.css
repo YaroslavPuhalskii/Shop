@@ -1,29 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-body{
+﻿body{
     font-family: Cambria, Georgia, "Times New Roman";
     margin: 0;
 }
@@ -35,7 +10,7 @@ div#header div.title, div.item h3, div.item h4, div.pager a {
 div#header {
     background-color: #444;
     border-bottom: 2px solid #111;
-    color: White;
+    color: white;
 }
 
 div#header div.title{
@@ -97,5 +72,40 @@ div.pager a:hover{
 
 div.pager a.selected{
     background-color: #353535;
-            color: White;
+            color: white;
 }
+
+body {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+/**/
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+DIV#categories A
+{
+ font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial; display: block;
+ text-decoration: none; padding: .6em; color: Black;
+ border-bottom: 1px solid silver;
+}
+DIV#categories A.selected { background-color: #666; color: White; }
+DIV#categories A:hover { background-color: #CCC; }
+DIV#categories A.selected:hover { background-color: #666; }
