@@ -1,5 +1,6 @@
 ﻿@using Shop.Domain.Entities
 @using Shop.WebUI.HtmlHelpers
+@using Shop.Domain.Abstract
 
 @model  Shop.WebUI.Models.ProductListViewModel
 @{
@@ -7,11 +8,7 @@
 }
 @foreach (var p in Model.Products)
 {
-    <div class="item">
-        <h3>@p.Name</h3>
-        @p.Description
-        <h4>@p.Price.ToString("c")</h4>
-    </div>
+    Html.RenderPartial("ProductSummary", p);
 }
 
 <div class="pager">
