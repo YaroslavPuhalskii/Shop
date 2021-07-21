@@ -9,6 +9,5 @@ namespace Shop.Domain.Concrete
     public class EFDbContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
-        public DbSet<Client> Clients { get; set; }
     }
 }

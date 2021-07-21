@@ -29,7 +29,6 @@ namespace Shop.WebUI.Infrastructure
         public void AddBindings()
         {
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
-            ninjectKernel.Bind<IClientRepository>().To<EFClientRepository>();
         }
     }
 }

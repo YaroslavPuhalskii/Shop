@@ -31,7 +31,7 @@ namespace Shop.WebUI.Controllers
             Product product = productRepository.Products
                 .FirstOrDefault(x => x.ProductId == productId);
 
-            if (product == null)
+            if (product != null)
             {
                 GetCart().AddItem(product, 1);
             }
@@ -62,6 +62,11 @@ namespace Shop.WebUI.Controllers
             }
 
             return cart;
+        }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
         }
     }
 }
