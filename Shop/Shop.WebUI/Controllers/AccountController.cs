@@ -5,16 +5,25 @@ using Shop.WebUI.Infrastructure.Abstract;
 using System.Web;
 using System.Web.Mvc;
 using Shop.WebUI.Models;
+using Shop.Domain.Entities;
+using Shop.Domain.Abstract;
+using System.Web.Security;
 
 namespace Shop.WebUI.Controllers
 {
     public class AccountController : Controller
     {
-        IAuthProvider authProvider;
+        readonly IAuthProvider authProvider;
+        readonly IUserRepository userRepository;
 
-        public AccountController(IAuthProvider provider)
+        //public AccountController(IAuthProvider provider)
+        //{
+        //    authProvider = provider;
+        //}
+
+        public AccountController(IUserRepository userrepository)
         {
-            authProvider = provider;
+            userRepository = userrepository;
         }
 
         public ViewResult Login()
@@ -41,6 +50,29 @@ namespace Shop.WebUI.Controllers
             {
                 return View();
             }
+        }
+
+        public ViewResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                User newUser = userRepository.CreateUser(user);
+                if (newUser != null)
+                {
+                    FormsAuthentication.SetAuthCookie(user.Name, true);
+                    TempData["message"] = string.Format("{0} has been added", user.Name);
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+
+            return View();
         }
     }
 }

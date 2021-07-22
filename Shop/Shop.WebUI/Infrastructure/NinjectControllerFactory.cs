@@ -32,6 +32,7 @@ namespace Shop.WebUI.Infrastructure
         {
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
             ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
+            ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
         }
     }
 }
