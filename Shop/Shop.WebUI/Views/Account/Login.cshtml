@@ -1,0 +1,18 @@
+﻿@model Shop.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Login In</h2>
+
+<p>Please enter log in these box</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.EditorForModel()
+    <p><input type="submit" value="Log in"/></p> 
+}
+

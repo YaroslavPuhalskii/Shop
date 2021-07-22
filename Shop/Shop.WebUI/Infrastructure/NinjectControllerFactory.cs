@@ -3,6 +3,8 @@ using Ninject;
 using Shop.Domain.Abstract;
 using Shop.Domain.Concrete;
 using Shop.Domain.Entities;
+using Shop.WebUI.Infrastructure.Abstract;
+using Shop.WebUI.Infrastructure.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +31,7 @@ namespace Shop.WebUI.Infrastructure
         public void AddBindings()
         {
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
+            ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }
     }
 }

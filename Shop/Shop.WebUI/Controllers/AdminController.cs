@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Shop.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductRepository productRepository;
