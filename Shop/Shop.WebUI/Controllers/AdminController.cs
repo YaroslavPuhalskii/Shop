@@ -57,7 +57,6 @@ namespace Shop.WebUI.Controllers
             return View(product);
         }
 
-        // POST: Admin/Edit/5
         [HttpPost]
         public ActionResult Edit(Product product)
         {
@@ -76,7 +75,12 @@ namespace Shop.WebUI.Controllers
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Product product = productRepository.DeleteProduct(id);
+            if (product != null)
+            {
+                TempData["message"] = string.Format("{0} was deleted", product.Name);
+            }
+            return RedirectToAction("Index");
         }
 
         // POST: Admin/Delete/5

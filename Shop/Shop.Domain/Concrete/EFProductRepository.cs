@@ -18,6 +18,18 @@ namespace Shop.Domain.Concrete
             }
         }
 
+        public Product DeleteProduct(int productId)
+        {
+            Product product = context.Products.Find(productId);
+            if (product != null)
+            {
+                context.Products.Remove(product);
+                context.SaveChanges();
+            }
+
+            return product;
+        }
+
         public void SaveProduct(Product product)
         {
             if (product.ProductId == 0)
