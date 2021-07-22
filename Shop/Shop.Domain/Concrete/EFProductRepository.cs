@@ -17,5 +17,26 @@ namespace Shop.Domain.Concrete
                 return context.Products;
             }
         }
+
+        public void SaveProduct(Product product)
+        {
+            if (product.ProductId == 0)
+            {
+                context.Products.Add(product);
+            }
+            else
+            {
+                Product pr = context.Products.Find(product.ProductId);
+                if (pr != null)
+                {
+                    pr.Name = product.Name;
+                    pr.Description = product.Description;
+                    pr.Category = product.Category;
+                    pr.Price = product.Price;
+                }
+            }
+
+            context.SaveChanges();
+        }
     }
 }

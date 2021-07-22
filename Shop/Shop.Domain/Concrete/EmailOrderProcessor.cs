@@ -18,7 +18,7 @@ namespace Shop.Domain.Concrete
         public string FileLocation = @"c:\sports_store_emails";
     }
 
-    public class EmailOrderProcessor : IOrderProcessor
+    public class EmailOrderProcessor
     {
     }
 }
